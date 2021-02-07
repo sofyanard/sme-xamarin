@@ -1,12 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SMEXamarin.Views.SimulasiEntryPage">
+             x:Class="SMEXamarin.Views.SimulasiEntryPage"
+             xmlns:local="clr-namespace:SMEXamarin.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:SimulasiEntryViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Frame BackgroundColor="Gray">
+                    <Label Text="Simulasi" FontSize="Title" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                </Frame>
+                <StackLayout RadioButtonGroup.GroupName="BasedOn" RadioButtonGroup.SelectedValue="{Binding BasedOnSelect}">
+                    <RadioButton GroupName="BasedOn" Content="Berdasarkan Plafon" Value="BasedOnPlafond"/>
+                    <RadioButton GroupName="BasedOn" Content="Berdasarkan Angsuran" Value="BasedOnAngsuran"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Jumlah (IDR)"/>
+                    <Entry Text="{Binding Amount}" Keyboard="Numeric"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Bunga (% per tahun)"/>
+                    <Entry Keyboard="Numeric" Text="{Binding Interest}"/>
+                </StackLayout>
+                <StackLayout RadioButtonGroup.GroupName="InterestType" RadioButtonGroup.SelectedValue="{Binding InterestTypeSelect}">
+                    <RadioButton GroupName="InterestType" Content="Anuitas" Value="Anuitas"/>
+                    <RadioButton GroupName="InterestType" Content="Flat" Value="Flat"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Tenor (bulan)"/>
+                    <Entry Keyboard="Numeric" Text="{Binding Tenor}"/>
+                </StackLayout>
+                <Button Text="Hitung" HorizontalOptions="FillAndExpand" BackgroundColor="Blue" TextColor="White" Command="{Binding SubmitCommand}"/>
+                <StackLayout Padding="10" BackgroundColor="LightGray">
+                    <Label Text="{Binding Response1}" FontSize="Large" />
+                    <Label Text="{Binding Response2}" FontSize="Large" />
+                    <Label Text="{Binding Response3}" FontSize="Large" />
+                    <Label Text="{Binding Response4}" FontSize="Large" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
