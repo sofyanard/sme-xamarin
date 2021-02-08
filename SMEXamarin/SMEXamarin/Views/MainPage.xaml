@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SMEXamarin.MainPage"
+             xmlns:local="clr-namespace:SMEXamarin.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="Gray">
+                <Label Text="Home" FontSize="Title" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            </Frame>
+            <Button Text="Simulasi" HorizontalOptions="FillAndExpand" Command="{Binding SimulasiCommand}"/>
+            <Button Text="Setting" HorizontalOptions="FillAndExpand" Command="{Binding SettingCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

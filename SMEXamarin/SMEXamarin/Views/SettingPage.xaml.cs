@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace SMEXamarin
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace SMEXamarin.Views
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SettingPage : ContentPage
     {
-        public MainPage()
+        public SettingPage()
         {
             InitializeComponent();
         }

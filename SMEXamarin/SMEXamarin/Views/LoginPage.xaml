@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SMEXamarin.Views.LoginPage"
+             xmlns:local="clr-namespace:SMEXamarin.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Label Text="Email"/>
+                <Entry Keyboard="Email" Text="{Binding Username}"/>
+                <Label Text="Password"/>
+                <Entry IsPassword="True" Text="{Binding Password}"/>
+                <Button Text="Login" BackgroundColor="DodgerBlue" TextColor="White" Command="{Binding LoginCommand}"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="{Binding Response}" FontSize="Large"/>
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Setting" Command="{Binding SettingCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

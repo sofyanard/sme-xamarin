@@ -11,10 +11,10 @@ namespace SMEXamarin
         {
             InitializeComponent();
 
-            _serverUrl = "http://192.168.1.111/smewebapi/api";
+            _serverUrl = "http://192.168.1.111/smewebapi";
 
             // MainPage = new NavigationPage(new MainPage());
-            MainPage = new NavigationPage(new SimulasiEntryPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
@@ -30,5 +30,7 @@ namespace SMEXamarin
         }
 
         public static string _serverUrl { get; set; }
+
+        public static string _accessToken { get; set; }
     }
 }

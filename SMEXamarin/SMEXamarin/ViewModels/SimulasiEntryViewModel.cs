@@ -17,7 +17,7 @@ namespace SMEXamarin.ViewModels
 
         private readonly HttpClient _client = new HttpClient();
 
-        private string apiUrl = App._serverUrl + "/simulasi";
+        private string apiUrl = App._serverUrl + "/api/simulasi";
 
         public SimulasiEntryViewModel()
         {
