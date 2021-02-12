@@ -10,13 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace SMEXamarin.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class NasabahPage : ContentPage
     {
-        public LoginPage()
+        public NasabahPage()
         {
             InitializeComponent();
-
-            NavigationPage.SetHasBackButton(this, false);
         }
     }
 }

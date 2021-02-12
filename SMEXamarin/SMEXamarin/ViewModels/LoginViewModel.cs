@@ -115,6 +115,7 @@ namespace SMEXamarin.ViewModels
                     loginResponse = JsonConvert.DeserializeObject<LoginResponse>(responseBody);
 
                     App._accessToken = loginResponse.access_token;
+                    App._userName = loginResponse.userName;
 
                     // Go To Main Page
                     var mainVM = new MainViewModel();

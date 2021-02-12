@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SMEXamarin.Views.NasabahPage"
+             xmlns:local="clr-namespace:SMEXamarin.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:NasabahViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame BackgroundColor="Gray">
+                    <Label Text="Data Nasabah" FontSize="Title" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                </Frame>
+
+                <Label Text="Nama Lengkap"/>
+                <Entry Text="{Binding NamaLengkap}"/>
+
+                <Label Text="Jenis Kelamin"/>
+                <Picker Title="Select Jenis Kelamin" 
+                ItemsSource="{Binding ListRfSex}"
+                ItemDisplayBinding="{Binding SexDesc}"
+                SelectedItem="{Binding SelectedRfSex}"/>
+
+                <Label Text="Tempat Lahir"/>
+                <Entry Text="{Binding TempatLahir}"/>
+
+                <Label Text="Tanggal Lahir"/>
+                <DatePicker Date="{Binding TanggalLahir}"/>
+
+                <Label Text="No Identitas"/>
+                <Entry Text="{Binding NoIdentitas}"/>
+
+                <Label Text="Alamat Rumah"/>
+                <Editor Text="{Binding AlamatRumah}" AutoSize="TextChanges"/>
+
+                <Label Text="Propinsi"/>
+                <Picker Title="Select Propinsi" 
+                ItemsSource="{Binding ListRefPropinsi}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedRefPropinsi}"/>
+
+                <Label Text="Kota/Kabupaten"/>
+                <Picker Title="Select Kota/Kabupaten" 
+                ItemsSource="{Binding ListRefKotaKab}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedRefKotaKab}"/>
+
+                <Label Text="Kecamatan"/>
+                <Picker Title="Select Kecamatan" 
+                ItemsSource="{Binding ListRefKecamatan}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedRefKecamatan}"/>
+
+                <Label Text="Kelurahan"/>
+                <Picker Title="Select Kelurahan" 
+                ItemsSource="{Binding ListRefKelurahan}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedRefKelurahan}"/>
+
+                <Label Text="Kode Pos"/>
+                <Entry Text="{Binding KodePosRumah}"/>
+
+                <Label Text="Telepon Rumah"/>
+                <Entry Text="{Binding TeleponRumah}"/>
+
+                <Label Text="Telepon Genggam"/>
+                <Entry Text="{Binding TeleponGenggam}"/>
+
+                <Label Text="Nama Ibu Kandung"/>
+                <Entry Text="{Binding NamaIbuKandung}"/>
+
+                <Button Text="Save" BackgroundColor="DodgerBlue" TextColor="White" Command="{Binding SaveCommand}"/>
+
+                <StackLayout VerticalOptions="EndAndExpand">
+                    <Label Text="{Binding TempLabel}" FontSize="Large"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

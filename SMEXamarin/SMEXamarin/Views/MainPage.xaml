@@ -11,10 +11,12 @@
     <ContentPage.Content>
         <StackLayout>
             <Frame BackgroundColor="Gray">
-                <Label Text="Home" FontSize="Title" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                <Label Text="{Binding UserName}" FontSize="Title" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
             </Frame>
             <Button Text="Simulasi" HorizontalOptions="FillAndExpand" Command="{Binding SimulasiCommand}"/>
+            <Button Text="Data Nasabah" HorizontalOptions="FillAndExpand" Command="{Binding NasabahCommand}"/>
             <Button Text="Setting" HorizontalOptions="FillAndExpand" Command="{Binding SettingCommand}"/>
+            <Button Text="Logout" HorizontalOptions="FillAndExpand" Command="{Binding LogoutCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

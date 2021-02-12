@@ -32,5 +32,7 @@ namespace SMEXamarin
         public static string _serverUrl { get; set; }
 
         public static string _accessToken { get; set; }
+
+        public static string _userName { get; set; }
     }
 }
