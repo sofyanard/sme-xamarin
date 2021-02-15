@@ -601,7 +601,57 @@ namespace SMEXamarin.ViewModels
             {
                 // POST
 
+                nasabah = new Nasabah();
+                
+                nasabah.NamaLengkap = NamaLengkap;
+                nasabah.JenisKelamin = JenisKelamin;
+                nasabah.TempatLahir = TempatLahir;
+                nasabah.TanggalLahir = TanggalLahir;
+                nasabah.NoIdentitas = NoIdentitas;
+                nasabah.AlamatRumah = AlamatRumah;
+                nasabah.PropinsiRumah = PropinsiRumah;
+                nasabah.KotaKabRumah = KotaKabRumah;
+                nasabah.KecamatanRumah = KecamatanRumah;
+                nasabah.KelurahanRumah = KelurahanRumah;
+                nasabah.KodePosRumah = kodePosRumah;
+                nasabah.TeleponRumah = TeleponRumah;
+                nasabah.TeleponGenggam = TeleponGenggam;
+                nasabah.NamaIbuKandung = NamaIbuKandung;
 
+                // nasabah.Pendidikan = "7";
+                // nasabah.StatusPerkawinan = "1";
+                // nasabah.Kewarganegaraan = "1";
+                // nasabah.StatusRumah = "1";
+
+                string postNasabahApiUrl = baseApiUrl + "/nasabah/";
+                try
+                {
+                    var serializeObject = JsonConvert.SerializeObject(nasabah);
+                    StringContent stringContent = new StringContent(serializeObject, Encoding.UTF8, "application/json");
+
+                    // TempLabel = stringContent.ToString();
+
+                    var authHeader = new AuthenticationHeaderValue("Bearer", App._accessToken);
+                    _client.DefaultRequestHeaders.Authorization = authHeader;
+
+                    var result = await _client.PostAsync(postNasabahApiUrl, stringContent);
+                    string resultContent = await result.Content.ReadAsStringAsync();
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Success", "Data berhasil disimpan", "Close");
+                        TempLabel = resultContent;
+                    }
+                    else
+                    {
+                        await App.Current.MainPage.DisplayAlert(result.StatusCode.ToString(), resultContent, "Close");
+                        TempLabel = resultContent;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await App.Current.MainPage.DisplayAlert("Request Error", ex.Message, "Close");
+                }
             }
             else
             {
@@ -623,10 +673,10 @@ namespace SMEXamarin.ViewModels
                 nasabah.TeleponGenggam = TeleponGenggam;
                 nasabah.NamaIbuKandung = NamaIbuKandung;
 
-                nasabah.Pendidikan = "7";
-                nasabah.StatusPerkawinan = "1";
-                nasabah.Kewarganegaraan = "1";
-                nasabah.StatusRumah = "1";
+                // nasabah.Pendidikan = "7";
+                // nasabah.StatusPerkawinan = "1";
+                // nasabah.Kewarganegaraan = "1";
+                // nasabah.StatusRumah = "1";
 
                 string putNasabahApiUrl = baseApiUrl + "/nasabah/putbasic/" + nasabahId;
                 try
@@ -634,7 +684,7 @@ namespace SMEXamarin.ViewModels
                     var serializeObject = JsonConvert.SerializeObject(nasabah);
                     StringContent stringContent = new StringContent(serializeObject, Encoding.UTF8, "application/json");
 
-                    TempLabel = stringContent.ToString();
+                    // TempLabel = stringContent.ToString();
 
                     var authHeader = new AuthenticationHeaderValue("Bearer", App._accessToken);
                     _client.DefaultRequestHeaders.Authorization = authHeader;
