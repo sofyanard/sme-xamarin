@@ -30,6 +30,13 @@ namespace SMEXamarin.ViewModels
                 await Application.Current.MainPage.Navigation.PushAsync(nasabahPage);
             });
 
+            UploadCommand = new Command(async () =>
+            {
+                var uploadListVM = new UploadListViewModel();
+                var uploadListPage = new UploadListPage();
+                await Application.Current.MainPage.Navigation.PushAsync(uploadListPage);
+            });
+
             SettingCommand = new Command(async () =>
             {
                 var settingVM = new SettingViewModel();
@@ -46,6 +53,7 @@ namespace SMEXamarin.ViewModels
 
         public Command SimulasiCommand { get; }
         public Command NasabahCommand { get; }
+        public Command UploadCommand { get; }
         public Command SettingCommand { get; }
         public Command LogoutCommand { get; }
 

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SMEXamarin.Views.UploadNewPage"
+             xmlns:local="clr-namespace:SMEXamarin.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:UploadNewViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <FlexLayout Direction="Column">
+                    <Frame BackgroundColor="Gray">
+                        <Label Text="Upload New File" FontSize="Title" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                    </Frame>
+                    <Button Text="Choose File" HorizontalOptions="FillAndExpand" Command="{Binding PickPhotoCommand}"/>
+                    <Image HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Source="{Binding TheImage}"/>
+                    <Label Text="Caption"/>
+                    <Entry Text="{Binding Caption}"/>
+                    <Button Text="Upload" BackgroundColor="DodgerBlue" TextColor="White" Command="{Binding UploadCommand}"/>
+                </FlexLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

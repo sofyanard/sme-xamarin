@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SMEXamarin.Views.UploadListPage"
+             xmlns:local="clr-namespace:SMEXamarin.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:UploadListViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame BackgroundColor="Gray">
+                    <Label Text="Upload File" FontSize="Title" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                </Frame>
+                <Button Text="Upload New File" HorizontalOptions="FillAndExpand" Command="{Binding UploadNewCommand}"/>
+                <CollectionView ItemsSource="{Binding ListUpload}" SelectionMode="Single" SelectedItem="{Binding SelectedFile}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding DownloadUrl}" HeightRequest="100" HorizontalOptions="Start" BackgroundColor="LightGray"/>
+                                    <StackLayout Grid.Column="1">
+                                        <Label  Text="{Binding Caption}" FontSize="Large" HorizontalOptions="StartAndExpand"/>
+                                        <Label  Text="{Binding FileName}" FontSize="Medium" HorizontalOptions="StartAndExpand"/>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label Text="{Binding TempText}" FontSize="Large"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
