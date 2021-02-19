@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SMEXamarin.Views.PengajuanNewPage"
+             xmlns:local="clr-namespace:SMEXamarin.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:PengajuanNewViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame BackgroundColor="Gray">
+                    <Label Text="Pengajuan Kredit Baru" FontSize="Title" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                </Frame>
+
+                <Label Text="Produk"/>
+                <Picker Title="Pilih Produk" 
+                    ItemsSource="{Binding ListRfProduct}"
+                    ItemDisplayBinding="{Binding ProductDesc}"
+                    SelectedItem="{Binding SelectedRfProduct}"/>
+
+                <Label Text="Limit (IDR)"/>
+                <Entry Keyboard="Numeric" Text="{Binding Limit}"/>
+
+                <Label Text="Tenor (bulan)"/>
+                <Entry Keyboard="Numeric" Text="{Binding Tenor}"/>
+
+                <Label Text="Tujuan Penggunaan"/>
+                <Picker Title="Pilih Tujuan Penggunaan" 
+                    ItemsSource="{Binding ListRfLoanPurpose}"
+                    ItemDisplayBinding="{Binding LoanPurpDesc}"
+                    SelectedItem="{Binding SelectedRfLoanPurpose}"/>
+
+                <Label Text="Dengan Agunan"/>
+                <Picker Title="Pilih Dengan Agunan" 
+                    ItemsSource="{Binding ListCollateralFlag}"
+                    ItemDisplayBinding="{Binding YesNoDesc}"
+                    SelectedItem="{Binding SelectedCollateralFlag}"/>
+
+                <Label Text="Jenis Agunan" IsEnabled="{Binding CollateralEnabled}"/>
+                <Picker Title="Pilih Jenis Agunan" 
+                    ItemsSource="{Binding ListRfCollateralType}"
+                    ItemDisplayBinding="{Binding ColTypeDesc}"
+                    SelectedItem="{Binding SelectedRfCollateralType}"
+                    IsEnabled="{Binding CollateralEnabled}"/>
+
+                <Label Text="Nilai Agunan (IDR)" IsEnabled="{Binding CollateralEnabled}"/>
+                <Entry Keyboard="Numeric" Text="{Binding CollateralValue}" IsEnabled="{Binding CollateralEnabled}"/>
+
+                <Label Text="Jenis Sertifikat" IsEnabled="{Binding CollateralEnabled}"/>
+                <Picker Title="Pilih Jenis Sertifikat" 
+                    ItemsSource="{Binding ListRfCertificateType}"
+                    ItemDisplayBinding="{Binding CertTypeDesc}"
+                    SelectedItem="{Binding SelectedRfCertificateType}"
+                    IsEnabled="{Binding CollateralEnabled}"/>
+
+                <Label Text="No Sertifikat" IsEnabled="{Binding CollateralEnabled}"/>
+                <Entry Text="{Binding CertificateNo}" IsEnabled="{Binding CollateralEnabled}"/>
+
+                <Label Text="Kantor Cabang Pemroses"/>
+                <Picker Title="Pilih Kantor Cabang" 
+                    ItemsSource="{Binding ListRfBranch}"
+                    ItemDisplayBinding="{Binding BranchNamePlus}"
+                    SelectedItem="{Binding SelectedRfBranch}"/>
+
+                <Button Text="Submit" BackgroundColor="DodgerBlue" TextColor="White" Command="{Binding SubmitCommand}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

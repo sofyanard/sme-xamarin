@@ -16,6 +16,7 @@
             <Button Text="Simulasi" HorizontalOptions="FillAndExpand" Command="{Binding SimulasiCommand}"/>
             <Button Text="Data Nasabah" HorizontalOptions="FillAndExpand" Command="{Binding NasabahCommand}"/>
             <Button Text="Upload File" HorizontalOptions="FillAndExpand" Command="{Binding UploadCommand}"/>
+            <Button Text="Pengajuan Kredit" HorizontalOptions="FillAndExpand" Command="{Binding PengajuanCommand}"/>
             <Button Text="Setting" HorizontalOptions="FillAndExpand" Command="{Binding SettingCommand}"/>
             <Button Text="Logout" HorizontalOptions="FillAndExpand" Command="{Binding LogoutCommand}"/>
         </StackLayout>

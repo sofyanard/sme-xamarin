@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SMEXamarin.Views.PengajuanDetailPage"
+             xmlns:local="clr-namespace:SMEXamarin.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:PengajuanDetailViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame BackgroundColor="Gray">
+                    <Label Text="Detail Pengajuan Kredit" FontSize="Title" TextColor="White" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                </Frame>
+
+                <Label Text="{Binding BindPengajuan.PengajuanDate, StringFormat='Date: {0:D}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.RfProduct.ProductDesc, StringFormat='Produk: {0}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.Limit, StringFormat='Limit (IDR): {0:N}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.Tenor, StringFormat='Tenor (bulan): {0}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.RfLoanPurpose.LoanPurpDesc, StringFormat='Tujuan: {0}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.CollateralFlag, StringFormat='Agunan: {0}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.RfCollateralType.ColTypeDesc, StringFormat='Jenis Agunan: {0}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.CollateralValue, StringFormat='Nilai Agunan (IDR): {0:N}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.RfCertType.CertTypeDesc, StringFormat='Sertifikat: {0}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.CertificateNo, StringFormat='No Sertifikat: {0}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.BranchCode, StringFormat='Kantor Cabang: {0}'}" FontSize="Medium"/>
+                <Label Text="{Binding BindPengajuan.LosApRegno, StringFormat='LOS Reg No: {0}'}" FontSize="Medium"/>
+
+                <Label Text="Tracking :" FontSize="Medium"/>
+                <CollectionView ItemsSource="{Binding BindHistory}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding ThSeq}" FontSize="Medium"/>
+                                    <Label Grid.Column="1" Text="{Binding TrackDate, StringFormat='{0:d}'}" FontSize="Medium"/>
+                                    <Label Grid.Column="2" Text="{Binding TrackName}" FontSize="Medium"/>
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

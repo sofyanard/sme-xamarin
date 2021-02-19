@@ -242,6 +242,14 @@ namespace SMEXamarin.Models
 
         [Column("ACTIVE")]
         public string Active { get; set; }
+
+        public string BranchNamePlus
+        {
+            get
+            {
+                return string.Format("{0} - {1}", BranchCode, BranchName);
+            }
+        }
     }
 
     public class RfTrack
@@ -268,5 +276,18 @@ namespace SMEXamarin.Models
 
         [Column("ACTIVE")]
         public string Active { get; set; }
+    }
+
+    public class ParameterYesNo
+    {
+        [Key]
+        public string YesNoId { get; set; }
+        public string YesNoDesc { get; set; }
+
+        public ParameterYesNo(string yesNoId, string yesNoDesc)
+        {
+            this.YesNoId = yesNoId;
+            this.YesNoDesc = yesNoDesc;
+        }
     }
 }

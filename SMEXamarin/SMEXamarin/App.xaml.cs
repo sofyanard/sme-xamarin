@@ -11,7 +11,7 @@ namespace SMEXamarin
         {
             InitializeComponent();
 
-            _serverUrl = "http://192.168.0.3/smewebapi";
+            _serverUrl = "http://192.168.0.2/smewebapi";
 
             // MainPage = new NavigationPage(new MainPage());
             MainPage = new NavigationPage(new LoginPage());
