@@ -39,4 +39,13 @@ namespace SMEXamarin.Models
 
         public DateTime expires { get; set; }
     }
+
+    public class RegisterRequest
+    {
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+
+        public string ConfirmPassword { get; set; }
+    }
 }

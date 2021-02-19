@@ -12,7 +12,7 @@ using SMEXamarin.Models;
 
 namespace SMEXamarin.ViewModels
 {
-    class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -25,6 +25,13 @@ namespace SMEXamarin.ViewModels
             LoginCommand = new Command(async () =>
             {
                 ExecuteLogin();
+            });
+
+            RegisterCommand = new Command(async () =>
+            {
+                var registerVM = new RegisterViewModel();
+                var registerPage = new RegisterPage();
+                await Application.Current.MainPage.Navigation.PushAsync(registerPage);
             });
 
             SettingCommand = new Command(async () =>
@@ -92,17 +99,17 @@ namespace SMEXamarin.ViewModels
         }
 
         public Command LoginCommand { get; }
-
         public Command SettingCommand { get; }
+        public Command RegisterCommand { get; }
 
         async private Task ExecuteLogin()
         {
             var loginData = new Dictionary<string, string>
-               {
-                   {"grant_type", "password"},
-                   {"username", Username},
-                   {"password", Password},
-               };
+            {
+                {"grant_type", "password"},
+                {"username", Username},
+                {"password", Password},
+            };
 
             try
             {
@@ -124,7 +131,7 @@ namespace SMEXamarin.ViewModels
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Result", result.StatusCode.ToString(), "Close");
+                    await App.Current.MainPage.DisplayAlert(result.StatusCode.ToString(), responseBody, "Close");
                     return;
                 }
             }
