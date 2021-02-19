@@ -511,11 +511,25 @@ namespace SMEXamarin.ViewModels
             {
                 var authHeader = new AuthenticationHeaderValue("Bearer", App._accessToken);
                 _client.DefaultRequestHeaders.Authorization = authHeader;
-                nasabahId = await _client.GetStringAsync(getNasabahIdApiUrl);
 
-                if (!String.IsNullOrEmpty(nasabahId))
+                var result = await _client.GetAsync(getNasabahIdApiUrl);
+                string resultContent = await result.Content.ReadAsStringAsync();
+
+                if (result.IsSuccessStatusCode)
                 {
-                    GetNasabah(nasabahId);
+                    nasabahId = resultContent;
+
+                    if (!String.IsNullOrEmpty(nasabahId))
+                    {
+                        GetNasabah(nasabahId);
+                    }
+                }
+                else
+                {
+                    if (!result.StatusCode.ToString().Equals("NotFound"))
+                    {
+                        await App.Current.MainPage.DisplayAlert(result.StatusCode.ToString(), resultContent, "Close");
+                    }
                 }
             }
             catch (Exception ex)
